@@ -243,11 +243,13 @@ font-size: 48px;
     gap: 15px;
     border: none;
   }
+ 
   
   .linha {
     display: flex;
     gap: 10px;
   }
+
   
   .linha input {
     flex: 1;
@@ -266,11 +268,22 @@ font-size: 48px;
   textarea {
     height: 150px;
     resize: none;
+    
   }
   
   input::placeholder,
   textarea::placeholder {
     color: #e5dcd6;
+   
+  }
+
+  input:focus{
+    outline: none;
+    border: 2px solid #8C6F5E;
+  }
+  textarea:focus{
+    outline:none;
+    border: 2px solid #8C6F5E;
   }
   
   button {
@@ -282,7 +295,7 @@ font-size: 48px;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s ease;
+    /*transition: background 0.3s ease; */
   }
   
   button:hover {
