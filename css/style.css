@@ -291,9 +291,83 @@ font-size: 48px;
   
 /* PAGINA SOBRE */
 .pag_sobre{
+    background: #FDF7EE ;
+    display: flex;
+    justify-content: space-around;
+}
+.pag_sobre .eu img{
+    margin-left: 40px;
+    margin-top: 40px;
+width: 350px;
+border: none;
+}
+
+.pag_sobre .sobremi{
+    margin-left: 60px;
+    margin-right: 50px;
+    margin-top: 60px;
+}
+
+.pag_sobre .sobremi span{
+color: #F26D6D;
+font-size: 48px;
+font-weight: bold;
+}
+
+.pag_sobre .sobremi p{
+    font-size: 24px;
+}
+
+.sobprojeto{
+
+    margin-top: 50px;
+    margin-left: 30px;
+  
+    
 
 }
 
+.tituloprojeto span{
+    margin-left: 45px;
+    font-size: 48px;
+    font-weight: bold;
+    color: #F26D6D;
+}
+
+.sobprojeto .texto p{
+    font-size: 22px;
+    color: #261A17;
+}
+
+
+
+.texto{
+    display: flex;
+    margin-left: 50px;
+    margin-right: 40px;
+    
+}
+.texto .imagemlogo img{
+width: 400px;
+margin-left: 30px;
+
+}
+
+.botoes{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.botoes a button{
+margin-left: 80px;
+/* margin-right: 50px; */
+background: #8C6F5E;
+color: #D9D9D9;
+border: none;
+font-size: 20px;
+border-radius: 10px;
+width: 160px;
+}
 
 /* FOOTER */
 
