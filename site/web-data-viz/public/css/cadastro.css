@@ -1,0 +1,185 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #D9D9D9;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('../assets/cadastro.png');
+    background-size: cover;     
+    background-position: center; 
+}
+
+.formularioC{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #261A1798; 
+    width: 500px;
+    height: 520px;
+    border-radius: 70px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+  
+.formularioL{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #261A1798; 
+    width: 500px;
+    height: 520px;
+    border-radius: 70px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.formularioC span, .formularioL span {
+    font-size: 45px;
+    position: absolute;
+    top: 75px;
+
+}
+
+.campo1, .campo1c, .campo2, .campo2c, .campo3, .campo4 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+.campo1 span, .campo1c span, .campo2 span, .campo2c span, .campo3 span, .campo4 span {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #D9D9D9;
+}
+
+.campo1 span{
+    margin-top: 98px;
+}
+
+.campo1c span{
+    margin-top: 85px;
+}
+
+.campo2 span{
+    margin-top: 158px;
+}
+
+.campo2c span{
+    margin-top: 145px;
+}
+
+.campo3 span{
+    margin-top: 205px;
+}
+
+.campo4 span{
+    margin-top: 265px;
+}
+
+.container .botaoCad button{
+    position: absolute;
+    margin-left: -90px;
+    bottom: 60px;
+    background-color: #F26D6D;
+    color: #261a17;
+    width: 190px;
+    height: 45px;
+    border: none;
+    border-radius: 12px;
+    font-size: medium;
+    font-weight: 600;
+}
+
+.container .botaoCad button:hover{
+    background-color: #F2A3A3;
+    cursor: pointer;
+}
+
+.container .botaoLog button{
+    position: absolute;
+    margin-left: -95px;
+    bottom: 60px;
+    align-self: center;
+    background-color: #F26D6D;
+    color: #261a17;
+    width: 190px;
+    height: 45px;
+    border: none;
+    border-radius: 12px;
+    font-size: medium;
+    font-weight: 600;
+}
+
+.container .botaoLog button:hover{
+    background-color: #F2A3A3;
+    cursor: pointer;
+}
+
+.logo{
+    position: absolute;
+    bottom: 470px;
+    left: 60px;
+    height: 100px;
+
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+.formularioC .campo {
+    display: block; 
+    font-size: 17px;
+    color: #D9D9D990;
+    margin-bottom: 2px;
+    margin-top: 22px;
+    font-weight: lighter; 
+    margin-left: 78px;
+    align-self: flex-start;
+}
+
+.formularioL .campo {
+    display: block; 
+    font-size: 17px;
+    color: #D9D9D990;
+    margin-bottom: 2px;
+    margin-top: 22px;
+    font-weight: lighter; 
+    margin-left: 78px;
+    align-self: flex-start;
+}
+  
+input{
+  border: none;
+  border-bottom: 2px solid #D9D9D990; /* Adiciona uma borda inferior de 1px sólida preta (você pode mudar a cor) */
+  outline: none; /* Opcional: remove a borda de foco padrão do navegador */
+  padding: 10px 0; /* Opcional: adiciona um pouco de padding vertical para espaçamento */
+  background-color: transparent; /* Torna o fundo transparente */
+  color: #D9D9D9;
+  width: 100%; /* Faz o input ocupar toda a largura do contêiner pai */
+  font-size: 16.5px;
+}
+
+.linkCadastro{
+    margin-top: 80px;
+    font-size: 15px;
+}
+
+a{
+    text-decoration: none;
+    color: #D9D9D9;
+    font-weight: bold;
+}
+a:hover{
+    color: #e69797;
+    cursor: pointer;
+}
