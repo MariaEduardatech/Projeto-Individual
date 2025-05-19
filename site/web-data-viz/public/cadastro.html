@@ -19,7 +19,7 @@
         <div class="campo1c">
           <span>Nome Completo</span>
           <input type="text" id="input_nome">
-          
+
         </div>
 
         <div class="campo2c">
@@ -29,21 +29,18 @@
 
         <div class="campo3">
           <span>Senha</span>
-         <input type="password" id="input_senha">
+          <input type="password" id="input_senha">
         </div>
 
         <div class="campo4">
           <span>Confirmar Senha</span>
-         <input type="password" id="input_Confirma_senha">
+          <input type="password" id="input_Confirma_senha">
         </div>
       </div>
 
       <div class="botaoCad">
-        <!-- <a href="login.html">
-          <button onclick="cadastro()">Cadastrar</button>
-        </a> -->
-      
-       <button onclick="cadastrar()">Cadastrar</button>
+
+        <button onclick="cadastrar()">Cadastrar</button>
       </div>
     </div>
     <div id="mensagem_erro"></div>
@@ -54,25 +51,28 @@
 
 <script>
 
-  let listaEmpresasCadastradas = [];
-
   function cadastrar() {
     var nomeVar = input_nome.value;
-    var emailVar =  input_email.value;
-    var senhaVar =  input_senha.value;
+    var emailVar = input_email.value;
+    var senhaVar = input_senha.value;
     var confirmacaoSenhaVar = input_Confirma_senha.value;
 
-    if (
+    if (emailVar.indexOf("@") == -1) {
+      mensagem_erro.innerHTML = "Insira um email válido";
+    } else if (senhaVar.length < 8) {
+      mensagem_erro.innerHTML += "A senha deve conter no mínimo 8 caracteres<br>";
+    } else if (senhaVar != confirmacaoSenhaVar) {
+      mensagem_erro.innerHTML += "Verifique sua senha<br>";
+    }
+      else if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == ""
     ) {
-      mensagem_erro.innerHTML =
-        "Preencha todos os campos";
-
+     mensagem_erro.innerHTML += "Preencha todos os campos<br>";
     }
-
+else {
 
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -89,7 +89,6 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
@@ -97,7 +96,7 @@
             window.location = "login.html";
           }, "2000");
 
-        
+
         }
       })
       .catch(function (resposta) {
@@ -105,6 +104,7 @@
       });
 
     return false;
-  }
 
+  }
+  } 
 </script>

@@ -3,9 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AKIBIS | YOUCAT</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>QUIZZ</h1>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/LOGOAKIB.png" alt="">
+            </div>
+            <ul class="navbar">
+                <li>
+                    <a href="homecadastrado.html">HOME</a>
+                </li>
+                <li>
+                    <a href="sobrecadast.html">SOBRE</a>
+                </li>
+                  <li>|</li>
+                   <li class="agora">
+                    <a href="#">YOUCAT</a>
+                </li>
+                  <li>
+                    <a href="jogo.html">CATDRESS</a>
+                  </li>
+                  <li>
+                    <a href="dashboard.html">DASHBOARD</a>
+                  </li>
+            </ul>
+        </div>
+    </div>
+
+<div class="quiz">
+<h1>Qual Gato Você Seria?</h1>
+  <div id="mensagemQuiz"></div>
+  <div id="resultadoQuiz"></div>
+  <div id="botoes"></div><br>
+  <a href="homecadastrado.html"><button onclick="voltar()">Voltar</button></a>
+</div>
+  <script>
+    var perguntas = [
+      {
+        pergunta: "1º - O que você mais gosta de fazer no tempo livre?",
+        resposta: {
+          a: "Sair para explorar novos lugares",
+          b: "Curtir com os amigos",
+          c: "Ler ou assistir séries em casa",
+          d: "Jogar ou escutar música"
+        }
+      },
+      {
+        pergunta: "2º - Qual dessas características mais combina com você?",
+        resposta: {
+          a: "Independente",
+          b: "Carinhoso(a)",
+          c: "Calmo",
+          d: "Curioso(a)"
+        }
+      },
+      {
+        pergunta: "3º - Se você fosse um super-herói, qual seria seu poder?",
+        resposta: {
+          a: "Voar",
+          b: "Invisibilidade",
+          c: "Super força",
+          d: "Telepatia"
+        }
+      },
+      {
+        pergunta: "4º - Qual ambiente você mais gosta de estar?",
+        resposta: {
+          a: "Um lugar agitado, com grandes novidades",
+          b: "Um ambiente silencioso e organizado",
+          c: "Um espaço equilibrado e com rotina",
+          d: "Uma casa cheia de pessoas e movimentação"
+        }
+      },
+      {
+        pergunta: "5º - O que você mais admira em uma pessoa?",
+        resposta: {
+          a: "Independencia e companheirismo",
+          b: "Lealdade e coragem",
+          c: "Resiliência e Facilidade de adaptação",
+          d: "Empatia e Paciência"
+        }
+      }
+    ];
+
+    var resultado = {
+      a:  `Gato Laranja — aventureiro(a), curioso(a) e cheio de energia! <br> <img src="./assets/gatoLaranja.jpg" alt="" width="200px">`,
+   
+      b: `Gato Preto — tranquilo(a), amoroso(a) e calmo(a)! <br> <img src="./assets/gatopreto.jpg" alt="" width="200px">`,
+      
+      c: `Gato SRD — adaptável, leal e equilibrado! <br> <img src="./assets/gatosiames.jpg" alt="" width="200px">`,
+      
+      d: `Gato Siamês — sociável, comunicativo(a) e sensível! <br> <img src="./assets/gatosrd.jpg" alt="" width="200px"> `
+        
+    };
+
+    var perguntaAtual = 0;
+    var respostas = { a: 0, b: 0, c: 0, d: 0 };
+    var mensagemQuiz = document.getElementById("mensagemQuiz");
+    var resultadoQuiz = document.getElementById("resultadoQuiz");
+
+    function mostrarPergunta() {
+      mensagemQuiz.innerHTML = "";
+
+      if (perguntaAtual < perguntas.length) {
+        var q = perguntas[perguntaAtual];
+        mensagemQuiz.innerHTML += "<h3>" + q.pergunta + "</h3>";
+
+        for (var opcao in q.resposta) {
+          var botao = document.createElement("button");
+          botao.textContent = q.resposta[opcao];
+          botao.onclick = function(letra) {
+            return function() {
+              respostas[letra]++;
+              perguntaAtual++;
+              mostrarPergunta();
+            }
+          }(opcao);
+          mensagemQuiz.appendChild(botao);
+        }
+      } else {
+        mostrarResultado();
+      }
+    }
+
+    function mostrarResultado() {
+      mensagemQuiz.innerHTML = "";
+      var maior = 0;
+      var escolha = "a";
+      for (var chave in respostas) {
+        if (respostas[chave] > maior) {
+          maior = respostas[chave];
+          escolha = chave;
+        }
+      }
+      resultadoQuiz.innerHTML = "<h2>Você Seria Um:</h2><p>" + resultado[escolha] + "</p>";
+    }
+
+    mostrarPergunta();
+  </script>
+
+    <footer class="footer">
+    <div class="footer-col esquerda">
+        <a href="./homecadastrado.html">Home</a>
+        <a href="./sobrecadast.html">Sobre</a>
+        <a href="./quiz.html">Quiz</a>
+        <a href="./jogo.html">CatDress</a>
+        <a href="./dashboard.html">Dashboard</a>
+    </div>
+
+    <div class="footer-col centro">
+        <img src="./assets/LOGOAKIB.png" alt="Logo" class="logo"><br>
+        <span>AKIBIS © 2025. Todos os direitos reservados. Desenvolvido por AKIBIS TEAM.</span>
+   
+    </div>
+   
+        <a href="https://github.com/MariaEduardatech/Projeto-Individual.git">GITHUB</a>
+    </div>
+</footer>
+
 </body>
 </html>
+
+

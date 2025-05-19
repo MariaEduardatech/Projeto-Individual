@@ -62,7 +62,7 @@
 }
 
 .campo1 span{
-    margin-top: 98px;
+    margin-top: 160px;
 }
 
 .campo1c span{
@@ -70,7 +70,7 @@
 }
 
 .campo2 span{
-    margin-top: 158px;
+    margin-top: 220px;
 }
 
 .campo2c span{
@@ -157,7 +157,11 @@
     margin-left: 78px;
     align-self: flex-start;
 }
-  
+
+.formularioL .campo1 input{
+    margin-top: 135px;
+}
+
 input{
   border: none;
   border-bottom: 2px solid #D9D9D990; /* Adiciona uma borda inferior de 1px sólida preta (você pode mudar a cor) */
@@ -170,8 +174,9 @@ input{
 }
 
 .linkCadastro{
-    margin-top: 80px;
+    margin-top: 5px;
     font-size: 15px;
+    margin-bottom: 100px;
 }
 
 a{
@@ -183,3 +188,4 @@ a:hover{
     color: #e69797;
     cursor: pointer;
 }
+
