@@ -58,11 +58,11 @@
     var confirmacaoSenhaVar = input_Confirma_senha.value;
 
     if (emailVar.indexOf("@") == -1) {
-      mensagem_erro.innerHTML = "Insira um email válido";
+      alert("Insira um email válido")
     } else if (senhaVar.length < 8) {
-      mensagem_erro.innerHTML += "A senha deve conter no mínimo 8 caracteres<br>";
+      alert("A senha deve conter no mínimo 8 caracteres")
     } else if (senhaVar != confirmacaoSenhaVar) {
-      mensagem_erro.innerHTML += "Verifique sua senha<br>";
+      alert("Verifique sua senha")
     }
       else if (
       nomeVar == "" ||
@@ -70,7 +70,7 @@
       senhaVar == "" ||
       confirmacaoSenhaVar == ""
     ) {
-     mensagem_erro.innerHTML += "Preencha todos os campos<br>";
+     alert("Preencha todos os campos");
     }
 else {
 

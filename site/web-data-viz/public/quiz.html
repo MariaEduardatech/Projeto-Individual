@@ -38,8 +38,10 @@
 <h1>Qual Gato Você Seria?</h1>
   <div id="mensagemQuiz"></div>
   <div id="resultadoQuiz"></div>
-  <div id="botoes"></div><br>
   <a href="homecadastrado.html"><button onclick="voltar()">Voltar</button></a>
+  <div id="botoes">
+  <button onclick="reiniciarQuiz()">Reiniciar Quiz</button> 
+  </div>
 </div>
   <script>
     var perguntas = [
@@ -47,18 +49,20 @@
         pergunta: "1º - O que você mais gosta de fazer no tempo livre?",
         resposta: {
           a: "Sair para explorar novos lugares",
-          b: "Curtir com os amigos",
-          c: "Ler ou assistir séries em casa",
-          d: "Jogar ou escutar música"
+          b: "Ouvir música ou tocar instrumentos",
+          c: "Ler livros ou assistir séries",
+          d: "Jogar videogames",
+          e: "Praticar esportes ou exercícios físicos"
         }
       },
       {
         pergunta: "2º - Qual dessas características mais combina com você?",
         resposta: {
-          a: "Independente",
-          b: "Carinhoso(a)",
-          c: "Calmo",
-          d: "Curioso(a)"
+          a: "Curioso",
+          b: "Calmo",
+          c: "Carinhoso",
+          d: "Independente",
+          e: "Comunicativo"
         }
       },
       {
@@ -67,7 +71,8 @@
           a: "Voar",
           b: "Invisibilidade",
           c: "Super força",
-          d: "Telepatia"
+          d: "Telepatia",
+          e: "Teletransporte"
         }
       },
       {
@@ -76,33 +81,37 @@
           a: "Um lugar agitado, com grandes novidades",
           b: "Um ambiente silencioso e organizado",
           c: "Um espaço equilibrado e com rotina",
-          d: "Uma casa cheia de pessoas e movimentação"
+          d: "Uma casa cheia de pessoas e movimentação",
+          e: "Ao ar livre em contato com a natureza"
         }
       },
       {
         pergunta: "5º - O que você mais admira em uma pessoa?",
         resposta: {
-          a: "Independencia e companheirismo",
-          b: "Lealdade e coragem",
+          a: "Independencia e Companheirismo",
+          b: "Lealdade e Coragem",
           c: "Resiliência e Facilidade de adaptação",
-          d: "Empatia e Paciência"
+          d: "Empatia e Paciência",
+          e: "Criatividade e Determinação"
         }
       }
     ];
 
     var resultado = {
-      a:  `Gato Laranja — aventureiro(a), curioso(a) e cheio de energia! <br> <img src="./assets/gatoLaranja.jpg" alt="" width="200px">`,
+      a:  `Gato Laranja — amigável, curioso e cheio de energia! <br> <img src="./assets/gatoLaranja.jpg" alt="">`,
    
-      b: `Gato Preto — tranquilo(a), amoroso(a) e calmo(a)! <br> <img src="./assets/gatopreto.jpg" alt="" width="200px">`,
+      b: `Gato Preto — tranquilo, amoroso e calmo! <br> <img src="./assets/gatopreto.jpg" alt="">`,
       
-      c: `Gato SRD — adaptável, leal e equilibrado! <br> <img src="./assets/gatosiames.jpg" alt="" width="200px">`,
+      c: `Gato Tricolor — adaptável, leal e carinhoso! <br> <img src="./assets/gatotricolor.jpg" alt="">`,
       
-      d: `Gato Siamês — sociável, comunicativo(a) e sensível! <br> <img src="./assets/gatosrd.jpg" alt="" width="200px"> `
+      d: `Gato Siamês — sociável, comunicativo e expressivo! <br> <img src="./assets/gatosiames.jpg" alt=""> `,
+
+      e: `Gato Frajola - independentes, agitado e territorial! <br> <img src="./assets/gatofrajola.jpg" alt="">`
         
     };
 
     var perguntaAtual = 0;
-    var respostas = { a: 0, b: 0, c: 0, d: 0 };
+    var respostas = { a: 0, b: 0, c: 0, d: 0, e: 0 };
     var mensagemQuiz = document.getElementById("mensagemQuiz");
     var resultadoQuiz = document.getElementById("resultadoQuiz");
 
@@ -144,13 +153,20 @@
     }
 
     mostrarPergunta();
+    
+      function reiniciarQuiz() {
+        perguntaAtual = 0;
+        respostas = { a: 0, b: 0, c: 0, d: 0, e: 0 }; 
+        resultadoQuiz.innerHTML = ""; 
+        mostrarPergunta();
+    }
   </script>
 
     <footer class="footer">
     <div class="footer-col esquerda">
         <a href="./homecadastrado.html">Home</a>
         <a href="./sobrecadast.html">Sobre</a>
-        <a href="./quiz.html">Quiz</a>
+        <a href="./quiz.html">YouCat</a>
         <a href="./jogo.html">CatDress</a>
         <a href="./dashboard.html">Dashboard</a>
     </div>
