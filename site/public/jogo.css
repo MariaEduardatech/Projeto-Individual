@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url(./assets/cadastro.png);
+}
+.jogo{
+    height: 500px;
+    width: 500px;
+    background: #261a17c1;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.cards, .card, .carta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cards{
+    height: 100%;
+    width: 100%;
+flex-wrap: wrap;
+}
+.cards .card{
+    cursor: pointer;
+    position: relative;
+    perspective: 800px;
+    margin-right: 10px;
+  
+    transform-style: preserve-3d;
+    height: calc(100% / 3 - 7px);
+    width: calc(100% / 4 - 10px);
+}
+.card.shake{
+    animation: shake 0.35s ease-in-out;
+}
+@keyframes shake{
+    0%, 100%{
+        transform: translateX(0);
+    }
+    20%{
+      transform: translateX(-13px);   
+    }
+     40%{
+      transform: translateX(13px);   
+    }
+     60%{
+      transform: translateX(-8px);   
+    }
+     80%{
+      transform: translateX(8px);   
+    }
+}
+.cards .card .carta{
+    width: 100%;
+    height: 100%;
+    background: #f26d6d8c;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    border-radius: 7px;
+    backface-visibility: hidden ;
+    transition: transform 0.25 linear;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 1);
+}
+.card .frente{
+transform: rotateY(-180deg);
+}
+.card .virada{
+    transform: rotate(0deg);
+}
+.cards .card img{
+    width: 100px;
+    height: 135px;
+    border-radius: 10px;
+}
+.card.virar .virada{
+   transform: rotateY(180deg); 
+}
+.card.virar .frente{
+   transform: rotateY(0); 
+}
