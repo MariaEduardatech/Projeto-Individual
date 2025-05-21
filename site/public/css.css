@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url(./assets/cadastro.png);
+}
+.jogo{
+    height: 500px;
+    width: 500px;
+    background: #d9d9d9;
+    border-radius: 10px;
+}
+
+.cards, .card, .carta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cards{
+    height: 100%;
+    width: 100%;
+flex-wrap: wrap;
+}
+.cards .card{
+    cursor: pointer;
+    height: calc(100% / 4 - 10px);
+    width: calc(100% / 4 - 10px);
+}
+.card .virada{
+    display: none;
+}
+.cards .card img{
+    width: 100px;
+    height: 135px;
+    border-radius: 5px;
+}
