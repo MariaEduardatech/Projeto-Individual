@@ -13,7 +13,7 @@
         <ul class="cards">
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatobravoJogo.jpg" alt="">
@@ -21,7 +21,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatochocjogo.jpg" alt="">
@@ -29,7 +29,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatodesconfJogo.jpg" alt="">
@@ -37,7 +37,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatofestajogo.jpg" alt="">
@@ -45,7 +45,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatofofoJogo.jpg" alt="">
@@ -53,7 +53,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatomaoJogo.jpg" alt="">
@@ -61,7 +61,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatobravoJogo.jpg" alt="">
@@ -69,7 +69,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatochocjogo.jpg" alt="">
@@ -77,7 +77,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatodesconfJogo.jpg" alt="">
@@ -85,7 +85,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatofestajogo.jpg" alt="">
@@ -93,7 +93,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatofofoJogo.jpg" alt="">
@@ -101,7 +101,7 @@
             </li>
             <li class="card">
                 <div class="carta virada">
-                    <span>?</span>
+                   
                 </div>
                 <div class="carta frente">
                     <img src="./assets/jogomemoria/gatomaoJogo.jpg" alt="">
@@ -160,7 +160,7 @@ setTimeout(() =>{
 cartaUm.classList.remove("shake", "virar");
 cartaDois.classList.remove("shake", "virar");
 cartaUm = cartaDois = ""
-}, 1200);
+}, 1100);
 }
 
 function embaralharCartas(){
@@ -168,7 +168,7 @@ function embaralharCartas(){
     cartaUm = cartaDois = "";
     disableDeck = false;
     var lista = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
-    lista.sort(() => Math.random() > 0.5 ? 1 : -1)
+    // lista.sort(() => Math.random() > 0.5 ? 1 : -1)
 
          cards.forEach((card, i) => {
             card.classList.remove("virar");
