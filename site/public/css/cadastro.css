@@ -18,7 +18,21 @@
     background-size: cover;     
     background-position: center; 
 }
-
+#mensagem_erro{
+    display: none;
+    background-color: #F26D6D;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    height: 80px;
+    text-align: center;
+    border-radius: 10px;
+    margin-right: -50px;
+    margin-left: 980px;
+    margin-top: -500px;
+    color: white;
+    position: absolute;
+}
 .formularioC{
     display: flex;
     flex-direction: column;

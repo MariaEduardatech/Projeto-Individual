@@ -1,11 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MemoryCat</title>
+    <title>AKIBIS | MEMORYCAT</title>
+    <link rel="stylesheet" href="jogo.css">
 </head>
+
 <body>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/LOGOAKIB.png" alt="">
+            </div>
+            <ul class="navbar">
+                <li>
+                    <a href="homecadastrado.html">HOME</a>
+                  </li>
+                <li>
+                    <a href="sobrecadast.html">SOBRE</a>
+                  </li>
+                  <li>|</li>
+                  <li>
+                    <a href="quiz.html">YOUCAT</a>
+                  </li>
+                  <li class="agora">
+                    <a href="#">MEMORYCAT</a>
+                </li>
+                  <li>
+                    <a href="dashboard.html">DASHBOARD</a>
+                  </li>
+            </ul>
+        </div>
+    </div>
+    <div class="Jogogato">
+    <div class="jogo">
+        <ul class="cards">
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatobravoJogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatochocjogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatodesconfJogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatofestajogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatofofoJogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatomaoJogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatobravoJogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatochocjogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatodesconfJogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatofestajogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatofofoJogo.jpg" alt="">
+                </div>
+            </li>
+            <li class="card">
+                <div class="carta virada">
+                   
+                </div>
+                <div class="carta frente">
+                    <img src="./assets/jogomemoria/gatomaoJogo.jpg" alt="">
+                </div>
+            </li>
+        </ul>
+    </div>
+     <a href="homecadastrado.html"><button onclick="voltar()">Voltar</button></a>
+</div>
+    <footer class="footer">
+        <div class="footer-col esquerda">
+            <a href="./homecadastrado.html">Home</a>
+            <a href="./sobrecadast.html">Sobre</a>
+            <a href="./quiz.html">YouCat</a>
+            <a href="./jogo.html">MemoryCat</a>
+            <a href="./dashboard.html">Dashboard</a>
+        </div>
+    
+        <div class="footer-col centro">
+            <img src="./assets/LOGOAKIB.png" alt="Logo" class="logo"><br>
+            <span>AKIBIS © 2025. Todos os direitos reservados. Desenvolvido por AKIBIS TEAM.</span>
+       
+        </div>
+       
+            <a href="https://github.com/MariaEduardatech/Projeto-Individual.git">GITHUB</a>
+        </div>
+    </footer>
     
 </body>
+
 </html>
+<script>
+    var cards = document.querySelectorAll(".card");
+
+    var cartasemPar = 0;
+    var cartaUm, cartaDois;
+var disableDeck = false;
+
+    function virarCarta(e) {
+        var clicarCarta = e.currentTarget;
+        if (clicarCarta !== cartaUm && !disableDeck) {
+            clicarCarta.classList.add("virar");
+            if (!cartaUm) {
+                return cartaUm = clicarCarta;
+            }
+
+            cartaDois = clicarCarta;
+disableDeck = false;
+            var cartaUmImg = cartaUm.querySelector(".frente img").src,
+            cartaDoisImg = cartaDois.querySelector(".frente img").src;
+            acharPares(cartaUmImg, cartaDoisImg);
+        }
+
+        console.log(cartaUm, cartaDois)
+    }
+
+function acharPares(img1, img2){
+ if(img1 === img2){
+    cartasemPar++;
+    if(cartasemPar == 6){
+        setTimeout(() => {
+            return embaralharCartas();
+        }, 1000);
+    }
+    cartaUm.removeEventListener("clicar", virarCarta);
+    cartaDois.removeEventListener("clicar", virarCarta);
+    cartaUm = cartaDois = "";
+    return disableDeck = false;
+}
+
+setTimeout(() =>{
+cartaUm.classList.add("shake");
+cartaDois.classList.add("shake");
+}, 400);
+
+setTimeout(() =>{
+cartaUm.classList.remove("shake", "virar");
+cartaDois.classList.remove("shake", "virar");
+cartaUm = cartaDois = ""
+}, 1100);
+}
+
+function embaralharCartas(){
+    cartasemPar = 0;
+    cartaUm = cartaDois = "";
+    disableDeck = false;
+    var lista = [1, 2, 3, 4, 5, 6, 2, 5, 4, 1, 6, 3];
+    lista.sort(() => Math.random() > 0.5 ? 1 : -1);
+
+         cards.forEach((card, i) => {
+            card.classList.remove("virar");
+            var imgTag = card.querySelector("img");
+            // imgTag.src = `./assets/jogomemoria/.jpg${lista[i]}`
+        card.addEventListener("click", virarCarta);
+    });
+}
+
+embaralharCartas();
+
+    cards.forEach(card => {
+        card.addEventListener("click", virarCarta);
+    });
+</script>

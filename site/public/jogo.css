@@ -2,14 +2,93 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-body{
-    display: flex;
+} 
+.Jogogato{
+display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background-image: url(./assets/cadastro.png);
 }
+.header{
+    background-color: #261A17;
+    display: flex;
+    align-items: center;
+    padding: 0px 0;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+}
+.header .container .navbar{
+color: #D9D9D9;
+list-style-type: none;
+display: flex;
+margin: 0;
+padding: 0;
+align-items: center;
+
+}
+.navbar li{
+    margin: 0 15px;
+}
+
+.container .logo img{
+   display: flex;
+   justify-self: flex-start;
+   align-items: flex-start;
+   margin-top: 0%;
+   margin-bottom: 9%;
+    width: 100px;
+    height: 100px;
+   
+}
+
+.navbar .agora{
+    justify-content: space-between;
+    display: flex;
+ background-color: #f26d6d8c;
+ text-align: center;
+ padding: 5px 10px;
+ border-radius: 5px;
+
+}
+
+.navbar a {
+    color: #D9D9D9;
+    text-decoration: none;
+    font-size: large;
+    align-items: center;
+    display: flex;
+}
+.container{
+    display: flex;
+    margin: auto;
+    width: 80%;
+  
+}
+.header .container{
+ justify-content: space-between;
+    align-items: center;
+}
+
+.Jogogato a button{
+    position: absolute;
+    margin-top: 260px;
+    align-self: center;
+    margin-left: -260px;
+    background: #d65c56;
+    color: #D9D9D9;
+    border: none;
+    width: 60px;
+    height: 26px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
 .jogo{
     height: 500px;
     width: 500px;
@@ -78,8 +157,8 @@ transform: rotateY(-180deg);
     transform: rotate(0deg);
 }
 .cards .card img{
-    width: 105px;
-    height: 147px;
+    width: 100px;
+    height: 140px;
     border-radius: 10px;
 }
 .card.virar .virada{
@@ -88,3 +167,36 @@ transform: rotateY(-180deg);
 .card.virar .frente{
    transform: rotateY(0); 
 }
+
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #261A17;
+    padding: 30px;
+    color: #D9D9D9;  
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+.footer-col.centro {
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+

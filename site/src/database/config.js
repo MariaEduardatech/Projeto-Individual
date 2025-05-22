@@ -36,3 +36,10 @@ function executar(instrucao) {
 module.exports = {
     executar
 };
+
+// fetch
+routes
+controller
+models
+
+

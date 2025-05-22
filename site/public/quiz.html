@@ -25,7 +25,7 @@
                     <a href="#">YOUCAT</a>
                 </li>
                   <li>
-                    <a href="jogo.html">CATDRESS</a>
+                    <a href="jogo.html">MEMORYCAT</a>
                   </li>
                   <li>
                     <a href="dashboard.html">DASHBOARD</a>
@@ -140,6 +140,8 @@
     }
 
     function mostrarResultado() {
+      // var resultadoVar = resultadoServer;
+
       mensagemQuiz.innerHTML = "";
       var maior = 0;
       var escolha = "a";
@@ -149,7 +151,27 @@
           escolha = chave;
         }
       }
+      // BACK END
+      // TODO: confirgurar a route de cadastrar resultado do quiz; 
+      // TODO: configurar controller de cadastrar da route
+      // TODO: criar model de quiz para quardar resultado do quiz 
+      // TODO: tratar os erros
+
+      // FRONT END 
+      // TODO: consumir a api na rota /quiz/guardar com o fetch(/quiz/guardar)
+      // observações: modelagem do banco de dados.
+
+    //   fetch("/quiz/guardar", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     resultadoServer: resultadoVar,
+    //   }),
+    // })
       resultadoQuiz.innerHTML = "<h2>Você Seria Um:</h2><p>" + resultado[escolha] + "</p>";
+
     }
 
     mostrarPergunta();
@@ -167,7 +189,7 @@
         <a href="./homecadastrado.html">Home</a>
         <a href="./sobrecadast.html">Sobre</a>
         <a href="./quiz.html">YouCat</a>
-        <a href="./jogo.html">CatDress</a>
+        <a href="./jogo.html">MemoryCat</a>
         <a href="./dashboard.html">Dashboard</a>
     </div>
 

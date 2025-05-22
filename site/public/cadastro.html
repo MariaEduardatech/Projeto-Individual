@@ -43,7 +43,9 @@
         <button onclick="cadastrar()">Cadastrar</button>
       </div>
     </div>
+    <div class="frase_erro">
     <div id="mensagem_erro"></div>
+    </div>
   </main>
 </body>
 
@@ -58,11 +60,14 @@
     var confirmacaoSenhaVar = input_Confirma_senha.value;
 
     if (emailVar.indexOf("@") == -1) {
-      alert("Insira um email válido")
+      document.getElementById('mensagem_erro').style.display = 'flex'
+      mensagem_erro.innerHTML = `Insira um email válido`
     } else if (senhaVar.length < 8) {
-      alert("A senha deve conter no mínimo 8 caracteres")
+      document.getElementById('mensagem_erro').style.display = 'flex'
+      mensagem_erro.innerHTML = `A senha deve conter no mínimo 8 caracteres`
     } else if (senhaVar != confirmacaoSenhaVar) {
-      alert("Verifique sua senha")
+      document.getElementById('mensagem_erro').style.display = 'flex'
+      mensagem_erro.innerHTML = `Verifique sua senha`
     }
       else if (
       nomeVar == "" ||
@@ -70,7 +75,8 @@
       senhaVar == "" ||
       confirmacaoSenhaVar == ""
     ) {
-     alert("Preencha todos os campos");
+      document.getElementById('mensagem_erro').style.display = 'flex'
+     mensagem_erro.innerHTML = `Preencha todos os campos`;
     }
 else {
 
