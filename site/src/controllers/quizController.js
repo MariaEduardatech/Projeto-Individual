@@ -1,11 +1,11 @@
 var quizModel = require("../models/quizModel");
 
 function guardar(req, res) {
-    var resultado = req.body.resultadoServer;
+    var resultado = req.body.resultado;
 
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        quizModel.cadastrar//( fkusuario, resultdoQuiz, fkquiz) 
+        quizModel.guardar( resultado, dataResposta) 
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -14,7 +14,7 @@ function guardar(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        "\nHouve um erro ao salvar! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
@@ -23,5 +23,6 @@ function guardar(req, res) {
     }
 
 
-module.exports = {guardar
+module.exports = {
+    guardar
 }

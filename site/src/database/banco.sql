@@ -1,0 +1,16 @@
+CREATE DATABASE Projeto_individual;
+
+USE Projeto_individual;
+
+CREATE TABLE usuarios(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(45),
+email VARCHAR (80),
+senha VARCHAR(20)
+);
+
+CREATE TABLE quiz(
+idQuiz INT AUTO_INCREMENT PRIMARY KEY,
+dataResposta DATETIME DEFAULT CURRENT_TIMESTAMP,
+resultado VARCHAR(100)
+);

@@ -1,37 +1,27 @@
 var database = require("../database/config")
 
-function buscarPerfil(id){
+function guardar(idQuiz){
      
-var instrucaoSql = `SELECT * FROM usuarios WHERE id = ${i}`;
+var instrucaoSql = `SELECT * FROM quiz WHERE id = ${idQuiz}`;
 
 console.log("executando a intrução SQL: \n" + instrucaoSql);
 return database.executar(instrucaoSql);
 }
 
-function autenticar(email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-    var instrucaoSql = `
-        SELECT id, nome, email FROM usuarios WHERE email = '${email}' AND senha = '${senha}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function cadastrar(nome, email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
+function guardar(dataResposta, resultado) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", dataResposta, resultado);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO usuarios (nome, email, senha) VALUES ('${nome}', '${email}', '${senha}');
+        INSERT INTO quiz (dataResposta, resultado) VALUES ('${dataResposta}', '${resultado}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 module.exports = {
-    autenticar,
-    cadastrar,
-    buscarPerfil
+    // salvar,
+    guardar
 };

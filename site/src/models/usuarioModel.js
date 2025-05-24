@@ -31,7 +31,7 @@ function cadastrar(nome, email, senha) {
 }
 
 module.exports = {
+    buscarPerfil,
     autenticar,
-    cadastrar,
-    buscarPerfil
+    cadastrar
 };

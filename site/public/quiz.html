@@ -98,7 +98,7 @@
     ];
 
     var resultado = {
-      a:  `Gato Laranja — amigável, curioso e cheio de energia! <br> <img src="./assets/gatoLaranja.jpg" alt="">`,
+      a:  `Gato Laranja — amigável, curioso e cheio de energia!<br><img src="./assets/gatoLaranja.jpg">`,
    
       b: `Gato Preto — tranquilo, amoroso e calmo! <br> <img src="./assets/gatopreto.jpg" alt="">`,
       
@@ -151,25 +151,31 @@
           escolha = chave;
         }
       }
-      // BACK END
-      // TODO: confirgurar a route de cadastrar resultado do quiz; 
-      // TODO: configurar controller de cadastrar da route
-      // TODO: criar model de quiz para quardar resultado do quiz 
-      // TODO: tratar os erros
+    var dataResposta = new Date().toISOString();
 
-      // FRONT END 
-      // TODO: consumir a api na rota /quiz/guardar com o fetch(/quiz/guardar)
-      // observações: modelagem do banco de dados.
+var dataAtual = new Date();
 
-    //   fetch("/quiz/guardar", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     resultadoServer: resultadoVar,
-    //   }),
-    // })
+function formatarDataParaMySQL(data) {
+    return data.getFullYear() + '-' +
+        ('0' + (data.getMonth() + 1)).slice(-2) + '-' +
+        ('0' + data.getDate()).slice(-2) + ' ' +
+        ('0' + data.getHours()).slice(-2) + ':' +
+        ('0' + data.getMinutes()).slice(-2) + ':' +
+        ('0' + data.getSeconds()).slice(-2);
+}
+
+var dataResposta = formatarDataParaMySQL(dataAtual);
+
+fetch("/quiz/guardar", {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+      resultado: resultado[escolha],
+      dataResposta: dataResposta
+    })
+})
+
+
       resultadoQuiz.innerHTML = "<h2>Você Seria Um:</h2><p>" + resultado[escolha] + "</p>";
 
     }
@@ -205,5 +211,3 @@
 
 </body>
 </html>
-
-
