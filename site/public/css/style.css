@@ -507,6 +507,94 @@ margin-bottom: 20px;
     background-color: #3c2925;
 }
 
+/* DASHBOARD */
+
+.dashboardPrincipal{
+background-image: url(../assets/cadastro.png);
+  font-family:'Times New Roman', Times, serif;
+  color: #261A17;
+  background-repeat: repeat;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 48px;
+  margin: 40px 0 20px 0;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.grafico-pizza {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.pizza {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(#261A17 0% 60%, #f9f3e8 60% 100%);
+}
+
+.grafico-pizza span {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  font-weight: bold;
+}
+
+.grafico-barras {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 100px;
+}
+
+.barra {
+  width: 20px;
+  background-color: #261A17;
+}
+
+.gatos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.gatos img {
+  width: 100px;
+}
+
+
 /* FOOTER */
 
 .footer {
