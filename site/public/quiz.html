@@ -43,6 +43,28 @@
   <button onclick="reiniciarQuiz()">Reiniciar Quiz</button> 
   </div>
 </div>
+
+    <footer class="footer">
+    <div class="footer-col esquerda">
+        <a href="./homecadastrado.html">Home</a>
+        <a href="./sobrecadast.html">Sobre</a>
+        <a href="./quiz.html">YouCat</a>
+        <a href="./jogo.html">MemoryCat</a>
+        <a href="./dashboard.html">Dashboard</a>
+    </div>
+
+    <div class="footer-col centro">
+        <img src="./assets/LOGOAKIB.png" alt="Logo" class="logo"><br>
+        <span>AKIBIS © 2025. Todos os direitos reservados. Desenvolvido por AKIBIS TEAM.</span>
+   
+    </div>
+   
+        <a href="https://github.com/MariaEduardatech/Projeto-Individal.git">GITHUB</a>
+    </div>
+</footer>
+
+</body>
+</html>
   <script>
     var perguntas = [
       {
@@ -76,7 +98,7 @@
         }
       },
       {
-        pergunta: "4º - Qual ambiente você mais gosta de estar?",
+        pergunta: "4º - Qual ambiente você mais <br> gosta de estar?",
         resposta: {
           a: "Um lugar agitado, com grandes novidades",
           b: "Um ambiente silencioso e organizado",
@@ -86,7 +108,7 @@
         }
       },
       {
-        pergunta: "5º - O que você mais admira em uma pessoa?",
+        pergunta: "5º - O que você mais admira em <br>uma pessoa?",
         resposta: {
           a: "Independencia e Companheirismo",
           b: "Lealdade e Coragem",
@@ -98,17 +120,28 @@
     ];
 
     var resultado = {
-      a:  `Gato Laranja — amigável, curioso e cheio de energia!<br><img src="./assets/gatoLaranja.jpg">`,
-   
-      b: `Gato Preto — tranquilo, amoroso e calmo! <br> <img src="./assets/gatopreto.jpg" alt="">`,
-      
-      c: `Gato Tricolor — adaptável, leal e carinhoso! <br> <img src="./assets/gatotricolor.jpg" alt="">`,
-      
-      d: `Gato Siamês — sociável, comunicativo e expressivo! <br> <img src="./assets/gatosiames.jpg" alt=""> `,
+  a: {
+    frase: "Gato Laranja — amigável, curioso e cheio de energia!",
+    imagem: "./assets/gatoLaranja.jpg"
+  },
+  b: {
+    frase: "Gato Preto — tranquilo, amoroso e calmo!",
+    imagem: "./assets/gatopreto.jpg"
+  },
+  c: {
+    frase: "Gato Tricolor — adaptável, leal e carinhoso!",
+    imagem: "./assets/gatotricolor.jpg"
+  },
+  d: {
+    frase: "Gato Siamês — sociável, comunicativo e expressivo!",
+    imagem: "./assets/gatosiames.jpg"
+  },
+  e: {
+    frase: "Gato Frajola — independente, agitado e territorial!",
+    imagem: "./assets/gatofrajola.jpg"
+  }
+};
 
-      e: `Gato Frajola - independentes, agitado e territorial! <br> <img src="./assets/gatofrajola.jpg" alt="">`
-        
-    };
 
     var perguntaAtual = 0;
     var respostas = { a: 0, b: 0, c: 0, d: 0, e: 0 };
@@ -139,46 +172,48 @@
       }
     }
 
-    function mostrarResultado() {
-      // var resultadoVar = resultadoServer;
+   function mostrarResultado() {
+  mensagemQuiz.innerHTML = "";
 
-      mensagemQuiz.innerHTML = "";
-      var maior = 0;
-      var escolha = "a";
-      for (var chave in respostas) {
-        if (respostas[chave] > maior) {
-          maior = respostas[chave];
-          escolha = chave;
-        }
-      }
-    var dataResposta = new Date().toISOString();
+  var maior = 0;
+  var escolha = "a";
+  for (var chave in respostas) {
+    if (respostas[chave] > maior) {
+      maior = respostas[chave];
+      escolha = chave;
+    }
+  }
 
-var dataAtual = new Date();
+  var dataAtual = new Date();
 
-function formatarDataParaMySQL(data) {
+  function formatarDataParaMySQL(data) {
     return data.getFullYear() + '-' +
         ('0' + (data.getMonth() + 1)).slice(-2) + '-' +
         ('0' + data.getDate()).slice(-2) + ' ' +
         ('0' + data.getHours()).slice(-2) + ':' +
         ('0' + data.getMinutes()).slice(-2) + ':' +
         ('0' + data.getSeconds()).slice(-2);
-}
+  }
 
-var dataResposta = formatarDataParaMySQL(dataAtual);
+  var dataResposta = formatarDataParaMySQL(dataAtual);
+
+var fkusuario = sessionStorage.ID_USUARIO;
 
 fetch("/quiz/guardar", {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-      resultado: resultado[escolha],
-      dataResposta: dataResposta
-    })
-})
-
-
-      resultadoQuiz.innerHTML = "<h2>Você Seria Um:</h2><p>" + resultado[escolha] + "</p>";
-
-    }
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ 
+    resultado: resultado[escolha].frase,
+    dataResposta: dataResposta,
+    fkusuario: fkusuario
+  })
+});
+  resultadoQuiz.innerHTML = `
+    <h2>Você Seria Um:</h2>
+    <p>${resultado[escolha].frase}</p>
+    <img src="${resultado[escolha].imagem}" alt="Gato Resultado" style="max-width: 300px;">
+  `;
+}
 
     mostrarPergunta();
     
@@ -189,25 +224,3 @@ fetch("/quiz/guardar", {
         mostrarPergunta();
     }
   </script>
-
-    <footer class="footer">
-    <div class="footer-col esquerda">
-        <a href="./homecadastrado.html">Home</a>
-        <a href="./sobrecadast.html">Sobre</a>
-        <a href="./quiz.html">YouCat</a>
-        <a href="./jogo.html">MemoryCat</a>
-        <a href="./dashboard.html">Dashboard</a>
-    </div>
-
-    <div class="footer-col centro">
-        <img src="./assets/LOGOAKIB.png" alt="Logo" class="logo"><br>
-        <span>AKIBIS © 2025. Todos os direitos reservados. Desenvolvido por AKIBIS TEAM.</span>
-   
-    </div>
-   
-        <a href="https://github.com/MariaEduardatech/Projeto-Individual.git">GITHUB</a>
-    </div>
-</footer>
-
-</body>
-</html>

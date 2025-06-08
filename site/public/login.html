@@ -45,10 +45,13 @@
 
     function entrar() {
 
+mensagem_erro.style.display = "none";
+
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
+            document.getElementById('mensagem_erro').style.display = 'flex'
             mensagem_erro.innerHTML = "Preencha todos os campos";
 
             return false;

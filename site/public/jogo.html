@@ -33,7 +33,17 @@
         </div>
     </div>
 
-    <div class="Jogogato">
+    <div class="jogoM">
+        
+ <div class="painel-info">
+    <span>Tempo: <span id="tempo">00:00</span></span>
+    <span>Pontuação: <span id="pontuacao">0</span></span>
+    <span>Erros:<span id="erros">0</span></span>
+</div>
+
+
+
+<div class="Jogogato">
         <div class="jogo">
             <ul class="cartas">
             </ul>
@@ -42,7 +52,7 @@
         
        <a href="jogo.html"><button id="reiniciar">Reiniciar Jogo</button></a> 
     </div>
-
+</div>
     <footer class="footer">
         <div class="footer-col esquerda">
             <a href="./homecadastrado.html">Home</a>
@@ -66,7 +76,8 @@
 </body>
 </html>
 <script>
-   var cartas = [
+
+var cartas = [
     'gatobravoJogo.jpg', 'gatochocjogo.jpg', 'gatodesconfJogo.jpg',
     'gatofestajogo.jpg', 'gatofofoJogo.jpg', 'gatomaoJogo.jpg'
 ];
@@ -76,28 +87,35 @@ var cartaUm = null;
 var cartaDois = null;
 var travar = false;
 var pardecartas = 0;
+var erros = 0;
+
+var tempo = 0;
+var intervalo = null;
 
 function criarCartas() {
     var ContainerCarta = document.querySelector('.cartas');
-    var imagemcarta = cartas.concat(cartas); 
-    imagemcarta = embaralharCartas(imagemcarta);
+    var todasCartas = cartas.concat(cartas);
+    todasCartas = embaralharCartas(todasCartas);
 
-    ContainerCarta.innerHTML = ''; 
-    listaCartas = []; 
+    ContainerCarta.innerHTML = '';
+    listaCartas = [];
 
-    for (var i = 0; i < imagemcarta.length; i++) {
-        var card = document.createElement('li');
-        card.classList.add('carta-item'); 
-        card.innerHTML = `
+    for (var i = 0; i < todasCartas.length; i++) {
+        var item = document.createElement('li');
+        item.classList.add('carta-item');
+        item.innerHTML = `
             <div class="carta virada"></div>
             <div class="carta frente">
-                <img src="./assets/jogomemoria/${imagemcarta[i]}" alt="">
+                <img src="./assets/jogomemoria/${todasCartas[i]}" alt="">
             </div>
         `;
-        card.addEventListener('click', virarCarta);
-        ContainerCarta.appendChild(card);
-        listaCartas.push(card);
+        item.addEventListener('click', virarCarta);
+        ContainerCarta.appendChild(item);
+        listaCartas.push(item);
     }
+
+    iniciarTimer();
+    atualizarInfos();
 }
 
 function embaralharCartas(lista) {
@@ -134,15 +152,17 @@ function verificacaoPar() {
 
     if (ImagemUm === ImagemDois) {
         pardecartas++;
+        atualizarInfos();
         resetarTabuleiro();
 
         if (pardecartas === cartas.length) {
-            setTimeout(function() {
-                reiniciarJogo();
-            }, 500);
+            clearInterval(intervalo);
+            setTimeout(reiniciarJogo, 1000);
         }
     } else {
-        setTimeout(function() {
+        erros++;
+        atualizarInfos();
+        setTimeout(function () {
             cartaUm.classList.remove('virar');
             cartaDois.classList.remove('virar');
             resetarTabuleiro();
@@ -157,12 +177,49 @@ function resetarTabuleiro() {
 }
 
 function reiniciarJogo() {
+
+    fetch("/jogo/salvar", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"}, 
+       body: JSON.stringify({
+        acertos: pardecartas,
+        erros: erros,
+        fkusuario: sessionStorage.ID_USUARIO
+    })
+});
+
     pardecartas = 0;
+    erros = 0;
     listaCartas = [];
+    tempo = 0;
+    atualizarInfos();
     criarCartas();
 }
 
+function atualizarInfos() {
+    document.getElementById('pontuacao').textContent = pardecartas;
+    document.getElementById('erros').textContent = erros;
+}
+
+function iniciarTimer() {
+    clearInterval(intervalo);
+    tempo = 0;
+    atualizarTempo();
+    intervalo = setInterval(function () {
+        tempo++;
+        atualizarTempo();
+    }, 1000);
+}
+
+function atualizarTempo() {
+    var minutos = Math.floor(tempo / 60);
+    var segundos = tempo % 60;
+    document.getElementById('tempo').textContent = 
+        `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+}
 
 criarCartas();
+
+
 
 </script>

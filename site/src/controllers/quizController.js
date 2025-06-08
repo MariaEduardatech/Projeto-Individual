@@ -1,11 +1,11 @@
 var quizModel = require("../models/quizModel");
 
 function guardar(req, res) {
-    var resultado = req.body.resultado;
-
+var resultado = req.body.resultado;
+var fkusuario = req.body.fkusuario;
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        quizModel.guardar( resultado, dataResposta) 
+        quizModel.guardar(dataResposta, resultado, fkusuario) 
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -22,7 +22,17 @@ function guardar(req, res) {
             );
     }
 
+function buscar(req, res) {
+    quizModel.buscar()
+    .then(
+        function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
 
 module.exports = {
-    guardar
+    guardar,
+    buscar
 }

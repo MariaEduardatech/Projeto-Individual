@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql2');
-
+var quizController = require('../controllers/quizController'); 
 var db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -10,20 +10,19 @@ var db = mysql.createPool({
 });
 
 router.post('/guardar', function (req, res) {
-    const {dataResposta, resultado } = req.body;
+    const {dataResposta, resultado, fkusuario } = req.body;
 
-    // if (!usuario || !{
-    //    , resultado return res.status(400).json({ erro: "Dados incompletos" });
-    // }
-
-    const sql = 'INSERT INTO quiz(dataResposta, resultado) VALUES (?, ?)';
-    db.query(sql, [dataResposta, resultado], function (err, results) {
+    const sql = 'INSERT INTO quiz (dataResposta, resultado, fkusuario) VALUES (?, ?, ?)';
+    db.query(sql, [dataResposta, resultado, fkusuario], function (err, results) {
         if (err) {
             console.error(err);
-            return res.status(500).json({ erro: "Erro ao salvar no banco de dados" });
+            return res.status(500).json({ erro: "Erro ao salvar quiz" });
         }
-        res.status(201).json({ mensagem: "alvo com suc, resultadoesso!" });
     });
+});
+
+router.get('/buscar', function (req, res) {
+    quizController.buscar(req, res);
 });
 
 module.exports = router;

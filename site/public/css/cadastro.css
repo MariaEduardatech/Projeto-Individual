@@ -19,7 +19,7 @@
     background-position: center; 
 }
 #mensagem_erro{
-    display: none;
+    display: flex;
     background-color: #F26D6D;
     align-items: center;
     justify-content: center;

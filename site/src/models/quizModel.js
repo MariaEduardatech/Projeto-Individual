@@ -1,25 +1,32 @@
 var database = require("../database/config")
 
-function guardar(idQuiz){
-     
-var instrucaoSql = `SELECT * FROM quiz WHERE id = ${idQuiz}`;
-
-console.log("executando a intrução SQL: \n" + instrucaoSql);
-return database.executar(instrucaoSql);
-}
-
-
-function guardar(dataResposta, resultado) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", dataResposta, resultado);
+function guardar(dataResposta, resultado, fkusuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", dataResposta, resultado, fkusuario);
  
     var instrucaoSql = `
-        INSERT INTO quiz (dataResposta, resultado) VALUES ('${dataResposta}', '${resultado}');
+        INSERT INTO quiz (dataResposta, resultado, fkusuario) VALUES ('${dataResposta}', '${resultado}' , '${fkusuario}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
+function buscar() {
+    var instrucaoSql = `
+        SELECT 
+            COUNT(CASE WHEN resultado LIKE '%Laranja%' THEN 1 END) AS laranja,
+            COUNT(CASE WHEN resultado LIKE '%Preto%' THEN 1 END) AS preto,
+            COUNT(CASE WHEN resultado LIKE '%Tricolor%' THEN 1 END) AS tricolor,
+            COUNT(CASE WHEN resultado LIKE '%Siamês%' THEN 1 END) AS siames,
+            COUNT(CASE WHEN resultado LIKE '%Frajola%' THEN 1 END) AS frajola
+        FROM quiz;
+        `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
-    // salvar,
-    guardar
+    
+    guardar,
+    buscar
 };

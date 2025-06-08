@@ -7,6 +7,12 @@
 
     <link rel="stylesheet" href="css/style.css">
 </head>
+<style>
+    body{
+
+        background-image: url('../assets/cadastro.png');
+    }
+</style>
 <body>
     <div class="header">
         <div class="container">
@@ -34,16 +40,20 @@
         </div>
     </div>
   <div class="dashboardPrincipal">
-<h1 class="titulo">AKIBIS</h1>
+<h1 class="titulo">DASHBOARD</h1>
   <div class="dashboard">
-    
+    <div class="graficos">
+  <div class="grafico">
+    <h3>Resultado do Quiz - YOUCAT</h3>
+    <canvas id="graficoQuiz"></canvas>
+  </div>
+  <div class="grafico">
+    <h3>Desempenho - MEMORYCAT</h3>
+    <canvas id="graficoJogo"></canvas>
+  </div>
+</div>
   </div>
 
-  <!-- <div class="gatos">
-    <img src="assets/gato1.png" alt="Gato">
-    <img src="assets/gato2.png" alt="Gato">
-    <img src="assets/gato3.png" alt="Gato">
-  </div> -->
 </div>
     <footer class="footer">
         <div class="footer-col esquerda">
@@ -63,10 +73,57 @@
             <a href="https://github.com/MariaEduardatech/Projeto-Individual.git">GITHUB</a>
         </div>
     </footer>
-    
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
 <script>
-
   
+fetch("/quiz/buscar")
+.then(res => res.json())
+  .then(data => {
+    const dadosQuiz = {
+      labels: ['Gato Laranja', 'Gato Preto', 'Gato Tricolor', 'Gato Siamês', 'Gato Frajola'],
+      datasets: [{
+        label: 'Respostas dos usuários',
+        data: [data[0].laranja, data[0].preto, data[0].tricolor, data[0].siames, data[0].frajola],
+        backgroundColor: ['#eb5414', '#666', '#f18075', '#20ffe9', '#bf74c7'],
+      }]
+    };
+    new Chart(document.getElementById('graficoQuiz'), {
+      type: 'bar',
+      data: dadosQuiz,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Gatos mais escolhidos' }
+        }
+      }
+    });
+  });
+  
+  fetch("/jogo/resultados")
+  .then(res => res.json())
+  .then(data => {
+    const dadosJogo = {
+      labels: ['Acertos', 'Erros'],
+      datasets: [{
+        label: 'Última Partida',
+        data: [data[0].acertos, data[0].erros],
+        backgroundColor: ['#21a70d','#ba0606' ],
+      }]
+    };
+    new Chart(document.getElementById('graficoJogo'), {
+      type: 'pie',
+      data: dadosJogo,
+      options: {
+        responsive: true,
+        plugins: {
+          title: { display: true, text: 'Desempenho no Jogo da Memória' }
+        }
+      }
+    });
+  });
+
+
 </script>
