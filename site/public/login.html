@@ -17,11 +17,11 @@
       <div class="formularioL">
         <span>LOGIN</span>
 
-        <div class="campo1">
+        <div class="campo1" style="margin-bottom: -20px;">
           <span>E-mail</span>
           <input type="text" id="input_email">
         </div>
-        <div class="campo2">
+        <div class="campo2" style="margin-top: 30px;">
           <span>Senha </span>
           <input type="password" id="input_senha">
         </div>
@@ -74,6 +74,10 @@ mensagem_erro.style.display = "none";
             console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
+
+                 document.getElementById('mensagem_erro').style.display = 'flex'
+            mensagem_erro.innerHTML = "Login realizado com Sucesso!";
+            
                 console.log(resposta);
 
                 resposta.json().then(json => {

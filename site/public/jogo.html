@@ -1,13 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -41,7 +33,6 @@
     <div class="jogoM">
         
  <div class="painel-info">
-    <span>Tempo: <span id="tempo">00:00</span></span>
     <span>Pontuação: <span id="pontuacao">0</span></span>
     <span>Erros:<span id="erros">0</span></span>
 </div>
@@ -94,7 +85,6 @@ var travar = false;
 var pardecartas = 0;
 var erros = 0;
 
-var tempo = 0;
 var intervalo = null;
 
 function criarCartas() {
@@ -119,7 +109,6 @@ function criarCartas() {
         listaCartas.push(item);
     }
 
-    iniciarTimer();
     atualizarInfos();
 }
 
@@ -196,7 +185,6 @@ function reiniciarJogo() {
     pardecartas = 0;
     erros = 0;
     listaCartas = [];
-    tempo = 0;
     atualizarInfos();
     criarCartas();
 }
@@ -204,23 +192,6 @@ function reiniciarJogo() {
 function atualizarInfos() {
     document.getElementById('pontuacao').textContent = pardecartas;
     document.getElementById('erros').textContent = erros;
-}
-
-function iniciarTimer() {
-    clearInterval(intervalo);
-    tempo = 0;
-    atualizarTempo();
-    intervalo = setInterval(function () {
-        tempo++;
-        atualizarTempo();
-    }, 1000);
-}
-
-function atualizarTempo() {
-    var minutos = Math.floor(tempo / 60);
-    var segundos = tempo % 60;
-    document.getElementById('tempo').textContent = 
-        `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 }
 
 criarCartas();

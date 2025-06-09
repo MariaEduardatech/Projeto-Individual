@@ -12,7 +12,7 @@ var db = mysql.createPool({
 router.post('/salvar', function (req, res) {
     const { acertos, erros, fkusuario} = req.body;
 
-    const sql = 'INSERT INTO jogojemoria (acertos, erros, fkusuario) VALUES (?, ?, ?)';
+    const sql = 'INSERT INTO jogomemoria (acertos, erros, fkusuario) VALUES (?, ?, ?)';
     db.query(sql, [acertos, erros, fkusuario], function (err, results) {
         if (err) {
             console.error(err);
@@ -31,9 +31,8 @@ router.get('/resultados', function (req, res) {
             SUM(erros) AS erros
         FROM jogomemoria where fkusuario = ?
     `;
-    db.query(sql, [fkusuario], function (err, results) {
+     db.query(sql, [fkusuario], function (err, results) {
         if (err) {
-            console.error(err);
             return res.status(500).json({ erro: "Erro ao buscar resultados" });
         }
         res.status(200).json(results);
@@ -42,11 +41,11 @@ router.get('/resultados', function (req, res) {
 
 router.get('/kpi', function (req, res) {
     const fkusuario = req.query.fkusuario;
-
     const sql = `
         SELECT 
-            IFNULL(SUM(acertos),0) AS totalAcertos
-        FROM jogojemoria
+            IFNULL(SUM(acertos),0) AS totalAcertos,
+            IFNULL(SUM(erros),0) AS totalErros
+        FROM jogomemoria
         WHERE fkusuario = ?
     `;
     db.query(sql, [fkusuario], function (err, results) {

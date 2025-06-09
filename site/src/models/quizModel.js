@@ -26,7 +26,6 @@ function buscar() {
 
 
 module.exports = {
-    
     guardar,
     buscar
 };

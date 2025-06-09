@@ -51,12 +51,12 @@
     <p id="kpiQuiz">...</p>
   </div>
   <div class="kpi-card">
-    <h3>Acertos Totais MEMORYCAT</h3>
+    <h3>Total de Acertos - MEMORYCAT</h3>
     <p id="kpiacertos">0</p>
   </div>
   <div class="kpi-card">
-    <h3>Tempo de Jogo MEMORYCAT</h3>
-    <p id="kpiTempo">0:00</p>
+    <h3>Total de Erros - MEMORYCAT</h3>
+    <p id="kpierros">0</p>
   </div>
 </div>
 
@@ -109,6 +109,14 @@ fetch(`/jogo/kpi?fkusuario=${id}`)
     document.getElementById('kpiacertos').innerText = data.totalAcertos;
 
   });
+
+  fetch(`/jogo/kpi?fkusuario=${id}`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('kpierros').innerText = data.totalErros;
+
+  });
+
 fetch("/quiz/buscar")
 .then(res => res.json())
   .then(data => {

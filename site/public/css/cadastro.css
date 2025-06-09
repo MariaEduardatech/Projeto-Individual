@@ -20,7 +20,7 @@
 }
 #mensagem_erro{
     display: none;
-    background-color: #F26D6D;
+    background-color: #ec9494;
     align-items: center;
     justify-content: center;
     width: 260px;
@@ -176,19 +176,35 @@
     align-self: flex-start;
 }
 
+#input_nome,
+#input_email,
+#input_senha,
+#input_Confirma_senha{
+    background-color:#d13b15;
+    background: transparent;
+
+}
+
 .formularioL .campo1 input{
     margin-top: 135px;
 }
 
 input{
   border: none;
-  border-bottom: 2px solid #D9D9D990; /* Adiciona uma borda inferior de 1px sólida preta (você pode mudar a cor) */
-  outline: none; /* Opcional: remove a borda de foco padrão do navegador */
-  padding: 10px 0; /* Opcional: adiciona um pouco de padding vertical para espaçamento */
-  background-color: transparent; /* Torna o fundo transparente */
+  border-bottom: 2px solid #D9D9D990;
+  outline: none; 
+  padding: 10px 0; 
   color: #D9D9D9;
-  width: 100%; /* Faz o input ocupar toda a largura do contêiner pai */
+  width: 100%;
   font-size: 16.5px;
+}
+input::selection {
+  background: transparent;
+  color: inherit; 
+}
+::selection {
+  background: transparent;
+  color: inherit; 
 }
 
 .linkCadastro{
