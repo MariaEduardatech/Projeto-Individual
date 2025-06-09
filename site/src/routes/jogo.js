@@ -12,7 +12,7 @@ var db = mysql.createPool({
 router.post('/salvar', function (req, res) {
     const { acertos, erros, fkusuario} = req.body;
 
-    const sql = 'INSERT INTO JogoMemoria (acertos, erros, fkusuario) VALUES (?, ?, ?)';
+    const sql = 'INSERT INTO jogojemoria (acertos, erros, fkusuario) VALUES (?, ?, ?)';
     db.query(sql, [acertos, erros, fkusuario], function (err, results) {
         if (err) {
             console.error(err);
@@ -29,7 +29,7 @@ router.get('/resultados', function (req, res) {
         SELECT 
             SUM(acertos) AS acertos,
             SUM(erros) AS erros
-        FROM JogoMemoria where fkusuario = ?
+        FROM jogomemoria where fkusuario = ?
     `;
     db.query(sql, [fkusuario], function (err, results) {
         if (err) {
@@ -46,7 +46,7 @@ router.get('/kpi', function (req, res) {
     const sql = `
         SELECT 
             IFNULL(SUM(acertos),0) AS totalAcertos
-        FROM JogoMemoria
+        FROM jogojemoria
         WHERE fkusuario = ?
     `;
     db.query(sql, [fkusuario], function (err, results) {

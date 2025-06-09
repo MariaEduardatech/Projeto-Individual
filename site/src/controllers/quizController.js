@@ -5,7 +5,7 @@ var resultado = req.body.resultado;
 var fkusuario = req.body.fkusuario;
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        quizModel.guardar(dataResposta, resultado, fkusuario) 
+        quizModel.guardar(dataresposta, resultado, fkusuario) 
             .then(
                 function (resultado) {
                     res.json(resultado);

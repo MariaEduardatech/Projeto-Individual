@@ -18,7 +18,7 @@ CREATE TABLE JogoMemoria (
 
 CREATE TABLE Quiz (
     idQuiz INT PRIMARY KEY AUTO_INCREMENT,
-    DataResposta DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Dataresposta DATETIME DEFAULT CURRENT_TIMESTAMP,
     resultado VARCHAR(150),
     fkusuario INT,
     FOREIGN KEY (fkusuario) REFERENCES usuario(id)

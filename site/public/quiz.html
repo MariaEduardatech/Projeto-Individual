@@ -199,7 +199,7 @@
         ('0' + data.getSeconds()).slice(-2);
   }
 
-  var dataResposta = formatarDataParaMySQL(dataAtual);
+  var dataresposta = formatarDataParaMySQL(dataAtual);
 
 var fkusuario = sessionStorage.ID_USUARIO;
 
@@ -208,7 +208,7 @@ fetch("/quiz/guardar", {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ 
     resultado: resultado[escolha].frase,
-    dataResposta: dataResposta,
+    dataresposta: dataresposta,
     fkusuario: fkusuario
   })
 });

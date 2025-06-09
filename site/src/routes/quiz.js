@@ -10,10 +10,10 @@ var db = mysql.createPool({
 });
 
 router.post('/guardar', function (req, res) {
-    const {dataResposta, resultado, fkusuario } = req.body;
+    const {dataresposta, resultado, fkusuario } = req.body;
 
-    const sql = 'INSERT INTO quiz (dataResposta, resultado, fkusuario) VALUES (?, ?, ?)';
-    db.query(sql, [dataResposta, resultado, fkusuario], function (err, results) {
+    const sql = 'INSERT INTO quiz (dataresposta, resultado, fkusuario) VALUES (?, ?, ?)';
+    db.query(sql, [dataresposta, resultado, fkusuario], function (err, results) {
         if (err) {
             console.error(err);
             return res.status(500).json({ erro: "Erro ao salvar quiz" });
@@ -31,7 +31,7 @@ router.get('/kpi', function (req, res) {
         SELECT resultado
         FROM quiz
         WHERE fkusuario = ?
-        ORDER BY dataResposta DESC
+        ORDER BY dataresposta DESC
         LIMIT 1
     `;
     db.query(sql, [fkusuario], function (err, results) {
