@@ -25,4 +25,27 @@ router.get('/buscar', function (req, res) {
     quizController.buscar(req, res);
 });
 
+router.get('/kpi', function (req, res) {
+    const fkusuario = req.query.fkusuario;
+    const sql = `
+        SELECT resultado
+        FROM quiz
+        WHERE fkusuario = ?
+        ORDER BY dataResposta DESC
+        LIMIT 1
+    `;
+    db.query(sql, [fkusuario], function (err, results) {
+        if (err) {
+            return res.status(500).json({ erro: "Erro ao buscar KPI do quiz" });
+        }
+      let resultado = results[0]?.resultado || "Sem resultado";
+        if (resultado.includes("—")) {
+    resultado = resultado.split("—")[0].trim();
+} else if (resultado.includes(" - ")) {
+    resultado = resultado.split(" - ")[0].trim();
+}
+        res.status(200).json({ resultado });
+    });
+});
+
 module.exports = router;

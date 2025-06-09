@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKIBIS | Página Inicial</title>
+    <title>AKIBIS | DASHBOARD</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -36,12 +36,30 @@
                     <li class="agora">
                     <a href="#">DASHBOARD</a>
                 </li>
+                  <div class="sair" onclick="limparSessao()">
+                <h3><a href="./login.html">Sair</a></h3>
+            </div>
             </ul>
         </div>
     </div>
   <div class="dashboardPrincipal">
-<h1 class="titulo">DASHBOARD</h1>
+<h1 class="titulodash">DASHBOARD</h1>
   <div class="dashboard">
+    <div class="kpi-container">
+  <div class="kpi-card">
+    <h3>Último Resultado YOUCAT</h3>
+    <p id="kpiQuiz">...</p>
+  </div>
+  <div class="kpi-card">
+    <h3>Acertos Totais MEMORYCAT</h3>
+    <p id="kpiacertos">0</p>
+  </div>
+  <div class="kpi-card">
+    <h3>Tempo de Jogo MEMORYCAT</h3>
+    <p id="kpiTempo">0:00</p>
+  </div>
+</div>
+
     <div class="graficos">
   <div class="grafico">
     <h3>Resultado do Quiz - YOUCAT</h3>
@@ -77,7 +95,20 @@
 </body>
 </html>
 <script>
-  
+  const id= sessionStorage.ID_USUARIO;
+  fetch(`/quiz/kpi?fkusuario=${id}`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('kpiQuiz').innerText = data.resultado || "Sem resultado";
+  });
+
+// KPI do Jogo (acertos totais)
+fetch(`/jogo/kpi?fkusuario=${id}`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('kpiacertos').innerText = data.totalAcertos;
+
+  });
 fetch("/quiz/buscar")
 .then(res => res.json())
   .then(data => {
@@ -96,13 +127,13 @@ fetch("/quiz/buscar")
         responsive: true,
         plugins: {
           legend: { display: false },
-          title: { display: true, text: 'Gatos mais escolhidos' }
+          title: { display: true, text: 'Resultado de todos os usuários' }
         }
       }
     });
   });
   
-  fetch("/jogo/resultados")
+  fetch(`/jogo/resultados?fkusuario=${sessionStorage.ID_USUARIO}`)
   .then(res => res.json())
   .then(data => {
     const dadosJogo = {
@@ -119,7 +150,7 @@ fetch("/quiz/buscar")
       options: {
         responsive: true,
         plugins: {
-          title: { display: true, text: 'Desempenho no Jogo da Memória' }
+          title: { display: true, text: 'Desempenho Individual no Jogo da Memória' }
         }
       }
     });

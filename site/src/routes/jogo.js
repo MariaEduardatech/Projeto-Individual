@@ -22,13 +22,16 @@ router.post('/salvar', function (req, res) {
 });
 
 router.get('/resultados', function (req, res) {
+
+    var fkusuario = req.query.fkusuario;
+    
     const sql = `
         SELECT 
             SUM(acertos) AS acertos,
             SUM(erros) AS erros
-        FROM JogoMemoria
+        FROM JogoMemoria where fkusuario = ?
     `;
-    db.query(sql, function (err, results) {
+    db.query(sql, [fkusuario], function (err, results) {
         if (err) {
             console.error(err);
             return res.status(500).json({ erro: "Erro ao buscar resultados" });
@@ -37,5 +40,20 @@ router.get('/resultados', function (req, res) {
     });
 });
 
+router.get('/kpi', function (req, res) {
+    const fkusuario = req.query.fkusuario;
 
+    const sql = `
+        SELECT 
+            IFNULL(SUM(acertos),0) AS totalAcertos
+        FROM JogoMemoria
+        WHERE fkusuario = ?
+    `;
+    db.query(sql, [fkusuario], function (err, results) {
+        if (err) {
+            return res.status(500).json({ erro: "Erro ao buscar KPIs" });
+        }
+        res.status(200).json(results[0]);
+    });
+});
 module.exports = router;

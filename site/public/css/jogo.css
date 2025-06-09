@@ -1,4 +1,7 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bungee+Shade&family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
+
+*{
+     font-family: "Judson", serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,6 +20,11 @@
     justify-content: center;
     min-height: 100vh;
   
+
+}
+
+.sair:hover{
+    color: #F26D6D;
 }
 .painel-info {
 display: flex;
@@ -55,6 +63,8 @@ font-family: sans-serif;
     list-style-type: none;
     display: flex;
     align-items: center;
+    margin: 0;
+padding: 0;
 }
 
 .navbar li {
@@ -63,22 +73,47 @@ font-family: sans-serif;
 
 .container .logo img {
     display: flex;
+      justify-self: flex-start;
+   align-items: flex-start;
     width: 100px;
     height: 100px;
+     margin-top: 0%;
+        margin-left: -60px;
+   margin-bottom: 9%;
 }
 
 .navbar .agora {
-    background-color: #f26d6d8c;
-    text-align: center;
-    padding: 5px 10px;
-    border-radius: 5px;
+    justify-content: space-between;
+    display: flex;
+ background-color: #f26d6d8c;
+ text-align: center;
+ padding: 5px 10px;
+ border-radius: 5px;
 }
 
 .navbar a {
-    color: #D9D9D9;
+   color: #D9D9D9;
     text-decoration: none;
     font-size: large;
+    align-items: center;
     display: flex;
+}
+.sair{
+
+    color: #D9D9D9;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: large;
+}
+.container{
+    display: flex;
+    margin: auto;
+    width: 80%;
+  
+}
+.header .container{
+ justify-content: space-between;
     align-items: center;
 }
 
@@ -214,4 +249,5 @@ font-family: sans-serif;
 .logo {
     width: 100px;
     height: auto;
+ 
 }

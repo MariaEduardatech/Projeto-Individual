@@ -19,7 +19,7 @@
     background-position: center; 
 }
 #mensagem_erro{
-    display: flex;
+    display: none;
     background-color: #F26D6D;
     align-items: center;
     justify-content: center;
@@ -119,6 +119,7 @@
 .container .botaoCad button:hover{
     background-color: #F2A3A3;
     cursor: pointer;
+     
 }
 
 .container .botaoLog button{
